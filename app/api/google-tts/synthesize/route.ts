@@ -1,11 +1,11 @@
 import { TextToSpeechClient } from '@google-cloud/text-to-speech'
-import path from 'path'
 
-const keyFilePath = path.join(process.cwd(), 'config', 'voicex-320513-54568f9979b3.json')
-
-const client = new TextToSpeechClient({
-  keyFilename: keyFilePath
-})
+// Create client with credentials from environment variable in production
+const client = new TextToSpeechClient(
+  process.env.NODE_ENV === 'production' 
+    ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}') }
+    : { keyFilename: './config/voice-457015-9f28c99756fa.json' }
+);
 
 export async function POST(request: Request) {
   try {

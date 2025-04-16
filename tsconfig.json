@@ -25,6 +25,6 @@
     "types": ["node", "react", "react-dom", "next"],
     "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(main)/projects/create-avatar/avatar-instructions/page.tsx.disabled", "app/(main)/projects/create-avatar/avatar-template-library/page.tsx.disabled", "app/(main)/projects/create-avatar/select-avatar-template/page.tsx.disabled", "app/(main)/projects/create-avatar/page.tsx.disbaled", "components/InteractiveAvatarCode.tsx", "components/InteractiveAvatar.tsx.disabled", "components/InteractiveAvatarTextInput.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(main)/projects/create-avatar/avatar-instructions/page.tsx.disabled", "app/(main)/projects/create-avatar/avatar-template-library/page.tsx.disabled", "app/(main)/projects/create-avatar/select-avatar-template/page.tsx.disabled", "app/(main)/projects/create-avatar/page.tsx.disbaled", "components/InteractiveAvatarCode.tsx", "components/InteractiveAvatar.tsx.disabled", "components/InteractiveAvatarTextInput.tsx", "app/(main)/interactiveAvatar/page.tsx"],
   "exclude": ["node_modules"]
 }
