@@ -1,6 +1,7 @@
 ---
-description: next js rules
+description: next js rules.
 globs: 
+alwaysApply: false
 ---
 
 # Your rule content
