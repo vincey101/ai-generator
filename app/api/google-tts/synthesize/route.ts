@@ -4,7 +4,7 @@ import { TextToSpeechClient } from '@google-cloud/text-to-speech'
 const client = new TextToSpeechClient(
   process.env.NODE_ENV === 'production' 
     ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}') }
-    : { keyFilename: './config/voice-457015-9f28c99756fa.json' }
+    : { keyFilename: './config/voice-457015-b14c173a4586.json' }
 );
 
 export async function POST(request: Request) {
