@@ -10,6 +10,7 @@ import { Engine } from "tsparticles-engine";
 // import Particles from "react-tsparticles";
 import Image from 'next/image';
 import bgImage from '@/public/background.jpg'
+import logo1 from '@/public/logo1.png'
 
 export default function Login() {
     const router = useRouter();
@@ -148,7 +149,7 @@ export default function Login() {
             <div className="max-w-md w-full space-y-8 bg-black/80 p-8 rounded-xl shadow-2xl relative z-10 mx-4 border border-[#21ABCD]/20">
                 <div className="flex flex-col items-center">
                     <Image
-                        src="/logo1.png"
+                        src={logo1}
                         alt="HumanAI Logo"
                         width={140}
                         height={40}
