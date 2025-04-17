@@ -150,10 +150,14 @@ export default function Login() {
                     <Image
                         src="/logo1.png"
                         alt="HumanAI Logo"
-                        width={140}
-                        height={40}
-                        className="object-contain w-auto h-8 mb-6"
+                        width={200}
+                        height={60}
+                        className="object-contain w-[180px] h-[50px] mb-6"
                         priority
+                        style={{
+                            maxWidth: '100%',
+                            height: 'auto'
+                        }}
                     />
                     <h2 className="mt-2 text-center text-3xl font-extrabold text-white">
                         Sign in to your account
