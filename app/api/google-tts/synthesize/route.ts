@@ -1,11 +1,24 @@
 import { TextToSpeechClient } from '@google-cloud/text-to-speech'
 
-// Create client with credentials from environment variable in production
-const client = new TextToSpeechClient(
-  process.env.NODE_ENV === 'production' 
-    ? { credentials: JSON.parse(process.env.GOOGLE_CREDENTIALS || '{}') }
-    : { keyFilename: './config/voice-457015-b14c173a4586.json' }
-);
+const getGCPCredentials = () => {
+  // for Vercel, use environment variables
+  if (process.env.GCP_PRIVATE_KEY) {
+    return {
+      credentials: {
+        client_email: process.env.GCP_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GCP_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      },
+      projectId: process.env.GCP_PROJECT_ID,
+    }
+  }
+  // for local development, use JSON file
+  return {
+    keyFilename: './config/voice-457015-b14c173a4586.json'
+  }
+}
+
+// Create client with credentials
+const client = new TextToSpeechClient(getGCPCredentials());
 
 export async function POST(request: Request) {
   try {
@@ -30,8 +43,17 @@ export async function POST(request: Request) {
         'Content-Type': 'audio/mpeg',
       },
     })
-  } catch (error) {
-    console.error('Error:', error)
-    return Response.json({ error: 'Failed to synthesize speech' }, { status: 500 })
+  } catch (error: any) {
+    console.error('TTS Synthesis Error:', {
+      environment: process.env.NODE_ENV,
+      isVercel: !!process.env.GCP_PRIVATE_KEY,
+      error: error.message,
+      code: error.code
+    });
+    return Response.json({ 
+      error: 'Failed to synthesize speech',
+      details: error.message,
+      code: error.code
+    }, { status: 500 })
   }
 } 
