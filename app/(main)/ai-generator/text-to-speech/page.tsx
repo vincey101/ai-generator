@@ -537,9 +537,9 @@ export default function TextToSpeechPage() {
 
             {/* Generated Voices List */}
             {generatedVoices.length > 0 && (
-              <div className="bg-white rounded-lg shadow-sm p-3 flex-grow">
+              <div className="bg-white rounded-lg shadow-sm p-3">
                 <h2 className="text-xs font-medium mb-2">Generated Voices</h2>
-                <div className="space-y-2">
+                <div className="space-y-2 h-[280px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 pr-2">
                   {generatedVoices.map((voice) => (
                     <div 
                       key={voice.id}
