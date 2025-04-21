@@ -137,7 +137,7 @@ export default function VideoGenerator() {
       title: 'Photo Editor',
       description: 'Edit and enhance your photos with professional tools.',
       icon: '/images/features/photo-editor.jpg',
-      link: '/ai-generator/photo-editorr'
+      link: '/ai-generator/photo-editor'
     }
   ];
 
