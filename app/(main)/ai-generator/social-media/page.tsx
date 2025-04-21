@@ -85,7 +85,7 @@ export default function SocialMediaDownloader() {
         {/* Header */}
         <div className="flex items-center mb-8">
           <Link 
-            href="/video-generator"
+            href="/ai-generator"
             className="p-2 hover:bg-gray-200 rounded-full transition-colors"
           >
             <ArrowLeftIcon className="w-6 h-6" />
