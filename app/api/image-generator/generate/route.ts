@@ -1,13 +1,15 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+export const runtime = 'edge'; // Use Edge Runtime
+
 // Add logging to check if API key is present
 console.log('API Key exists:', !!process.env.OPENAI_API_KEY);
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY?.trim(), // Add trim to remove any potential whitespace
-  maxRetries: 3, // Add retries
-  timeout: 30 * 1000, // 30 second timeout
+  maxRetries: 2, // Add retries
+  timeout: 45 * 1000, // 45 second timeout
 });
 
 export async function POST(req: Request) {
@@ -78,14 +80,14 @@ export async function POST(req: Request) {
       
       return NextResponse.json(
         { error: `OpenAI API Error: ${error.message}` },
-        { status: error.status || 500 }
+        { status: error.status || 504 }
       );
     }
 
     const errorMessage = error instanceof Error ? error.message : 'Failed to generate image';
     return NextResponse.json(
       { error: errorMessage },
-      { status: 500 }
+      { status: 504 }
     );
   }
 } 
